@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "df2f9610d35a2a7e650058aedb05dc0b",
+    "content-hash": "41f08e1e2bd2c25d98ac4eb328677100",
     "packages": [
         {
             "name": "geeshoe/dblib",
-            "version": "dev-develop",
+            "version": "v1.0.0-Alpha",
             "source": {
                 "type": "git",
                 "url": "https://github.com/geeShoe/dblib.git",
-                "reference": "bc5a01094a3690290e999afb6da10776d49a01c4"
+                "reference": "12382d91f0c36686800a1851032738f9dc90b69f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/geeShoe/dblib/zipball/bc5a01094a3690290e999afb6da10776d49a01c4",
-                "reference": "bc5a01094a3690290e999afb6da10776d49a01c4",
+                "url": "https://api.github.com/repos/geeShoe/dblib/zipball/12382d91f0c36686800a1851032738f9dc90b69f",
+                "reference": "12382d91f0c36686800a1851032738f9dc90b69f",
                 "shasum": ""
             },
             "require": {
@@ -60,7 +60,7 @@
                 "pdo",
                 "php"
             ],
-            "time": "2018-12-17T05:32:02+00:00"
+            "time": "2019-01-09T14:53:37+00:00"
         }
     ],
     "packages-dev": [
@@ -1738,7 +1738,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "geeshoe/dblib": 20,
+        "geeshoe/dblib": 15,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,

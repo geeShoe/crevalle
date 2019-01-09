@@ -20,7 +20,7 @@
     "php": "^7.2",
     "ext-pdo_mysql": "*",
     "ext-pdo": "*",
-    "geeshoe/dblib": "dev-develop"
+    "geeshoe/dblib": "v1.0.0-Alpha"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.5",
