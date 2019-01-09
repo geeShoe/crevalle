@@ -17,6 +17,11 @@ class Article
     /**
      * @var string
      */
+    public $id;
+
+    /**
+     * @var string
+     */
     public $title;
 
     /**
