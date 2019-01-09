@@ -1,0 +1,39 @@
+{
+  "name": "geeshoe/crevalle",
+  "description": "A micro CMS library written in PHP.",
+  "keywords": [
+    "geeshoe",
+    "crevalle",
+    "cms"
+  ],
+  "homepage": "https://geeshoe.com",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "Jesse Rushlow",
+      "email": "jr@geeshoe.com",
+      "homepage": "https://geeshoe.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.2",
+    "ext-pdo_mysql": "*",
+    "ext-pdo": "*",
+    "geeshoe/dblib": "dev-develop"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.5",
+    "roave/security-advisories": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "Geeshoe\\Crevalle\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Geeshoe\\CrevalleTest\\": "tests/"
+    }
+  }
+}
