@@ -7,7 +7,9 @@ declare(strict_types=1);
 
 namespace Geeshoe\Crevalle;
 
+use Geeshoe\Crevalle\Exception\CrevalleException;
 use Geeshoe\DbLib\Core\Objects;
+use Geeshoe\DbLib\Exceptions\DbLibQueryException;
 
 /**
  * Class GetArticles
@@ -34,14 +36,22 @@ class GetArticles
     /**
      * @param string $table
      * @return array
-     * @throws \Geeshoe\DbLib\Exceptions\DbLibQueryException
+     * @throws CrevalleException
      */
     public function getAllArticles(string $table): array
     {
-        $results = $this->dblObjects->queryDbGetAllResultsAsClass(
-            'SELECT * FROM '.$table.';',
-            Article::class
-        );
+        try {
+            $results = $this->dblObjects->queryDbGetAllResultsAsClass(
+                'SELECT * FROM ' . $table . ';',
+                Article::class
+            );
+        } catch (DbLibQueryException $exception) {
+            throw new CrevalleException(
+                'Unable to retrieve articles from DB.',
+                0,
+                $exception
+            );
+        }
 
         return $results;
     }

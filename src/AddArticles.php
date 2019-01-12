@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace Geeshoe\Crevalle;
 
+use Geeshoe\Crevalle\Exception\CrevalleException;
 use Geeshoe\DbLib\Core\PreparedStatements;
 use Ramsey\Uuid\Uuid;
 
@@ -36,7 +37,7 @@ class AddArticles
      * @param string $title
      * @param string $content
      * @return string
-     * @throws \Exception
+     * @throws CrevalleException
      */
     public function addArticle(string $title, string $content): string
     {
@@ -56,10 +57,18 @@ class AddArticles
 
     /**
      * @return string
-     * @throws \Exception
+     * @throws CrevalleException
      */
     protected function generateUUID(): string
     {
-        return Uuid::uuid4()->toString();
+        try {
+            return Uuid::uuid4()->toString();
+        } catch (\Exception $exception) {
+            throw new CrevalleException(
+                'Unable to generate UUID.',
+                0,
+                $exception
+            );
+        }
     }
 }

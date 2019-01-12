@@ -7,8 +7,10 @@
 namespace Geeshoe\CrevalleTest\UnitTests;
 
 use Geeshoe\Crevalle\Article;
+use Geeshoe\Crevalle\Exception\CrevalleException;
 use Geeshoe\Crevalle\GetArticles;
 use Geeshoe\DbLib\Core\Objects;
+use Geeshoe\DbLib\Exceptions\DbLibQueryException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -36,7 +38,7 @@ class GetArticlesTest extends TestCase
 
     /**
      * @return array
-     * @throws \Geeshoe\DbLib\Exceptions\DbLibQueryException
+     * @throws CrevalleException
      */
     public function getAllArticlesObjectSetup(): array
     {
@@ -48,7 +50,7 @@ class GetArticlesTest extends TestCase
     }
 
     /**
-     * @throws \Geeshoe\DbLib\Exceptions\DbLibQueryException
+     * @throws CrevalleException
      */
     public function testAssertGetAllArticlesReturnsAnArray(): void
     {
@@ -58,7 +60,7 @@ class GetArticlesTest extends TestCase
     }
 
     /**
-     * @throws \Geeshoe\DbLib\Exceptions\DbLibQueryException
+     * @throws CrevalleException
      */
     public function testGetAllArticlesReturnsAnArrayOfArticles(): void
     {
@@ -67,5 +69,17 @@ class GetArticlesTest extends TestCase
         foreach ($articleArray as $article) {
             $this->assertInstanceOf(Article::class, $article);
         }
+    }
+
+    public function testGetAllArticlesThrowsException(): void
+    {
+        $this->dblObjectsMock->method('queryDbGetAllResultsAsClass')
+            ->willThrowException(new DbLibQueryException('Test'));
+
+        $this->expectException(CrevalleException::class);
+        $this->expectExceptionMessage('Unable to retrieve articles from DB.');
+
+        $articles = new GetArticles($this->dblObjectsMock);
+        $articles->getAllArticles('someTable');
     }
 }
