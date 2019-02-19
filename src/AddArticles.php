@@ -34,12 +34,14 @@ class AddArticles
     }
 
     /**
+     * @param string $table
      * @param string $title
      * @param string $content
      * @return string
      * @throws CrevalleException
+     * @throws \Geeshoe\DbLib\Exceptions\DbLibException
      */
-    public function addArticle(string $title, string $content): string
+    public function addArticle(string $table, string $title, string $content): string
     {
         $dataArray = [
             'id' => $this->generateUUID(),
@@ -48,7 +50,7 @@ class AddArticles
         ];
 
         $this->dblStatement->executePreparedInsertQuery(
-            'crevalle_articles',
+            filter_var($table, FILTER_SANITIZE_SPECIAL_CHARS),
             $dataArray
         );
 
